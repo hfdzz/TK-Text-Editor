@@ -1,3 +1,7 @@
+# Yusuf Hafidz
+# 120140234
+# RB
+
 import tkinter as tk
 from tkinter import filedialog
 
@@ -75,10 +79,13 @@ f_opened = False    # File open status
 f_name = None       # Opened file name
 
 # Callback Function
+
+# Open File
 def open_file():
     global f_opened
     global f_name
 
+    # Open file dialog
     fd = filedialog.askopenfilename(
         filetypes=[("Text Files", "*.txt"), ("All Files","*.*")],
         title="Open Text File..."
@@ -86,12 +93,14 @@ def open_file():
     if fd:
         # If a file is selected
         with open(fd, "r") as f:
+            # Open file, put file data in editor, rename window title
             txt_main_editor.delete("1.0", tk.END)
             txt_main_editor.insert("1.0", f.read())
             root.title(f"{CONST_app_name} - {f.name}")
             f_name = f.name
             f_opened = True
 
+# Save file
 def save_file() -> int: 
     global f_opened
     global f_name
