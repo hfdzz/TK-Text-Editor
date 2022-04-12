@@ -12,15 +12,22 @@ root = tk.Tk()
 root.title("Text Editor")
 
 # Window Size
-# root.geometry("800x800")
+root.geometry("800x800")
+
+# Root Grid Configuration
+root.rowconfigure(0, weight=1,minsize=100)
+root.columnconfigure(0, weight=0, minsize=100)
+root.columnconfigure(1, weight=1, minsize=100)
 
 # Frames
 frm_side_menu = tk.Frame(root,
-    background="red"
+    background="#4f4f4f"
     )
+frm_side_menu.grid(row=0, column=0, sticky="ns")
 frm_editor= tk.Frame(root,
-    background="blue"
+    background="#3f3f3f"
     )
+frm_editor.grid(row=0,column=1, sticky="nswe")
 
 # ===== #
 # Side Menu
@@ -32,13 +39,13 @@ btn_open = tk.Button(frm_side_menu,
     height=1,
     width=10
     )
-btn_open.pack()
+btn_open.grid(row=0, column=0, padx=10,pady=(10,5))
 btn_save = tk.Button(frm_side_menu,
     text="Save",
     height=1,
     width=10
     )
-btn_save.pack()
+btn_save.grid(row=1, column=0, padx=10,pady=5)
 
 # ===== #
 # Main Editor
@@ -51,10 +58,6 @@ txt_main_editor = tk.Text(frm_editor,
     borderwidth=0
 )
 txt_main_editor.pack(fill=tk.BOTH, expand=True)
-
-# Packs
-frm_side_menu.pack(side=tk.LEFT, fill=tk.Y)
-frm_editor.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
 # ===== #
 # Logics/Commands
