@@ -13,7 +13,8 @@ CONST_app_name = "Text Editor"
 root.title(CONST_app_name)
 
 # Root Window Size
-root.geometry("800x800")
+root.geometry("900x800")
+root.minsize(0,800) # Tinggi minimal window 800px (sesuai spesifikasi tugas)
 
 # Root Grid Configuration
 root.rowconfigure(0, weight=1,minsize=100)
@@ -52,14 +53,18 @@ btn_save.grid(row=1, column=0, padx=10,pady=5)
 # Main Editor
 # ===== #
 
-# Text
+# Textbox
 txt_main_editor = tk.Text(frm_editor,
     background="#3f3f3f",
+    # background="red", # For debugging purpose
     foreground="white",
     borderwidth=0,
     insertbackground="white"
 )
-txt_main_editor.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+txt_main_editor.grid(column=0, row=0, padx=10, pady=10, sticky="nswe")
+# Frame Editor Grid Config
+frm_editor.rowconfigure(0, weight=1)
+frm_editor.columnconfigure(0, weight=1, minsize=800,)
 
 # ===== #
 # Logics/Commands
